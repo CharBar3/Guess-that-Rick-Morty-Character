@@ -1,6 +1,6 @@
-# Guess that Superhero!
+# Guess that Character!
 -
-An application that desplays the picture of a superhero and then you guess who it is
+App that displays a Rick and Morty character and has you guess who they are.
 
 ## Technologies used
 tbd

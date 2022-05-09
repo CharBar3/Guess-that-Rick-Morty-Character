@@ -48,8 +48,8 @@ const URL = `https://rickandmortyapi.com/api/character/${characterIDNumbersJoin}
 
 
 $.ajax(URL).then(function (data) {
-  console.log({ data });
-  $("#characterImage").append(`<img src="${data[randomCharacterRecieved].image}"/><p>${data[randomCharacterRecieved].name}`);
+//   console.log({ data });
+  $("#characterImage").append(`<img src="${data[randomCharacterRecieved].image}"/><p>`);
 
   // gets the names in each character pulled from the array an adds them to a select option
   data.forEach((element) => {
@@ -57,8 +57,6 @@ $.ajax(URL).then(function (data) {
       `<option value="${element.name}">${element.name}</option>`
     );
   });
-
-  console.log($('#characterOption').find(":selected").text())
 
   //compares the character name attached to the image to the data selected and lets you know if you guess correctly
   $('#guessSelectionForm').submit(function(event){

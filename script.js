@@ -26,6 +26,9 @@ let characterIDNumbers = [];
 // will eventually get input from the user for how many options they want to choose from
 const amountOfOptions = 5;
 
+// variable to count the amount of guesses it took to get the correct one
+let numberOfGuesses = 0;
+
 // variable to pick a character from the recieved data at random
 const randomCharacterRecieved = getRandomCharacter()
 
@@ -46,7 +49,7 @@ const URL = `https://rickandmortyapi.com/api/character/${characterIDNumbersJoin}
 
 $.ajax(URL).then(function (data) {
   console.log({ data });
-  $("#characterImage").append(`<img src="${data[randomCharacterRecieved].image}"/>`);
+  $("#characterImage").append(`<img src="${data[randomCharacterRecieved].image}"/><p>${data[randomCharacterRecieved].name}`);
 
   // gets the names in each character pulled from the array an adds them to a select option
   data.forEach((element) => {
@@ -60,11 +63,12 @@ $.ajax(URL).then(function (data) {
   //compares the character name attached to the image to the data selected and lets you know if you guess correctly
   $('#guessSelectionForm').submit(function(event){
     event.preventDefault();
-    console.log("formSubmitted")
     if ($('#characterOption').find(":selected").text() == data[randomCharacterRecieved].name) {
-        $('body').append('<p>you guessed correctly</p>')
+        $('body').append(`<p>${$('#characterOption').find(":selected").text()} is the correct answer! it took you ${numberOfGuesses} tries.</p>`)
     } else {
-        console.log($('#characterOption').find(":selected").text())
+        // console.log($('#characterOption').find(":selected").text())
+        $('body').append(`<p>${$('#characterOption').find(":selected").text()} is NOT the correct answer!</p>`)
+        numberOfGuesses++
     }
   })
   

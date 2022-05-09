@@ -24,10 +24,10 @@ function getRandomCharacter() {
 let characterIDNumbers = [];
 
 // will eventually get input from the user for how many options they want to choose from
-const amountOfOptions = 5;
+const amountOfOptions = 10;
 
 // variable to count the amount of guesses it took to get the correct one
-let numberOfGuesses = 0;
+let numberOfGuesses = 0; 
 
 // variable to pick a character from the recieved data at random
 const randomCharacterRecieved = getRandomCharacter()
@@ -64,6 +64,7 @@ $.ajax(URL).then(function (data) {
   $('#guessSelectionForm').submit(function(event){
     event.preventDefault();
     if ($('#characterOption').find(":selected").text() == data[randomCharacterRecieved].name) {
+        numberOfGuesses++
         $('body').append(`<p>${$('#characterOption').find(":selected").text()} is the correct answer! it took you ${numberOfGuesses} tries.</p>`)
     } else {
         // console.log($('#characterOption').find(":selected").text())
@@ -73,3 +74,15 @@ $.ajax(URL).then(function (data) {
   })
   
 });
+
+// $('#difficultyLevelForm').submit(function(event){
+//     event.preventDefault();
+//     if ($('#characterOption').find(":selected").text() == data[randomCharacterRecieved].name) {
+//         numberOfGuesses++
+//         $('body').append(`<p>${$('#characterOption').find(":selected").text()} is the correct answer! it took you ${numberOfGuesses} tries.</p>`)
+//     } else {
+//         // console.log($('#characterOption').find(":selected").text())
+//         $('body').append(`<p>${$('#characterOption').find(":selected").text()} is NOT the correct answer!</p>`)
+//         numberOfGuesses++
+//     }
+//   })

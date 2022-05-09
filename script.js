@@ -13,15 +13,24 @@ function getRandomCharacterID() {
     return Math.floor(Math.random() * 826)
 }
 
+// put numbers in an array
 
-const characterOneNumber = getRandomCharacterID()
+let characterIDNumbers = []
 
-console.log(characterOneNumber)
+const amountOfOptions = 20
+
+for (let index = 0; index < amountOfOptions; index++) {
+    characterIDNumbers[index] = getRandomCharacterID()
+}
+
+characterIDNumbers = characterIDNumbers.join(', ')
+
+// console.log(characterOneNumber)
 
 // setting api request to pull with 10 separate character ID's so that we can get an array of data to manipulate for those 10 characters
-const URL = `https://rickandmortyapi.com/api/character/${characterOneNumber}`
+const URL = `https://rickandmortyapi.com/api/character/${characterIDNumbers}`
 
-console.log(URL)
+// console.log(URL)
 
 // console.logging data pulled for testing
 

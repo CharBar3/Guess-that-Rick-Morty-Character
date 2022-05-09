@@ -17,23 +17,28 @@ function getRandomCharacterID() {
 
 let characterIDNumbers = []
 
-const amountOfOptions = 20
+// will eventually get input from the user for how many options they want to choose from 
+const amountOfOptions = 5
 
 for (let index = 0; index < amountOfOptions; index++) {
     characterIDNumbers[index] = getRandomCharacterID()
 }
 
-characterIDNumbers = characterIDNumbers.join(', ')
+characterIDNumbersJoin = characterIDNumbers.join(', ')
 
 // console.log(characterOneNumber)
 
 // setting api request to pull with 10 separate character ID's so that we can get an array of data to manipulate for those 10 characters
-const URL = `https://rickandmortyapi.com/api/character/${characterIDNumbers}`
+const URL = `https://rickandmortyapi.com/api/character/${characterIDNumbersJoin}`
 
-// console.log(URL)
+// making variables to display on the screen 
 
-// console.logging data pulled for testing
+let $randomCharacterImage = $('#characterImage')
+
+
 
 $.ajax(URL).then(function(data){
     console.log(data)
+    console.log(data[1].image)
+    $('#characterImage').append(`<img src="${data[0].image}"/>`)
 })

@@ -1,40 +1,22 @@
-// if ($) {
-//   console.log("jQuery Activated!");
-// }
-
-// pull 10 random characters from rick and morty API
-// https://rickandmortyapi.com/api/character/1,183 (example characterOneNumber, characterTwoNumber, ...)
-
-// making the character one id number be a random number between 1 and 826(the total number of rick and morty characters)
-// Inspiration below
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor
-
-// Function to get a random number between 1 and a larger number with the larger number being passed in
-function getRandomCharacterID() {
-  return Math.floor(Math.random() * 826);
+// Function for getting a random number 1 and largestNumber
+function getRandomNumber(largestNumber){
+  return Math.floor(Math.random() * largestNumber);
 }
 
-// gets a random number between between 0 and the largest amount of options available 
-function getRandomCharacter() {
-    return Math.floor(Math.random() * amountOfOptions);
-  }
-
-// put numbers in an array
-
+// Array of ID numbers used to get characters from the Rick and Morty API
 let characterIDNumbers = [];
 
-// will eventually get input from the user for how many options they want to choose from
+// amount of characters 
 const amountOfOptions = 10;
 
 // variable to count the amount of guesses it took to get the correct one
 let numberOfGuesses = 0; 
 
 // variable to pick a character from the recieved data at random
-const randomCharacterRecieved = getRandomCharacter()
+const randomCharacterRecieved = getRandomNumber(amountOfOptions)
 
 for (let index = 0; index < amountOfOptions; index++) {
-  characterIDNumbers[index] = getRandomCharacterID();
+  characterIDNumbers[index] = getRandomNumber(826);
 }
 
 characterIDNumbersJoin = characterIDNumbers.join(", ");

@@ -1,70 +1,67 @@
 // Function for getting a random number 1 and largestNumber
-function getRandomNumber(largestNumber){
+function getRandomNumber(largestNumber) {
   return Math.floor(Math.random() * largestNumber);
 }
 
-// Array of ID numbers used to get characters from the Rick and Morty API
-let characterIDNumbers = [];
-
-// amount of characters 
+// amount of character options the player chooses between
 const amountOfOptions = 10;
 
-// variable to count the amount of guesses it took to get the correct one
-let numberOfGuesses = 0; 
+let numberOfGuesses = 0;
 
-// variable to pick a character from the recieved data at random
-const randomCharacterRecieved = getRandomNumber(amountOfOptions)
+// used to grab a random character out of characterIDNumbers and select its image to display
+const randomCharacterRecieved = getRandomNumber(amountOfOptions);
 
+// Makes an array of random character ID numbers between 1 and 826 with a length of amountOfOptions
+let characterIDNumbers = [];
 for (let index = 0; index < amountOfOptions; index++) {
   characterIDNumbers[index] = getRandomNumber(826);
 }
 
-characterIDNumbersJoin = characterIDNumbers.join(", ");
+// Pull request from the Rick and Morty API for characters based on their ID numbers.
+const URL = `https://rickandmortyapi.com/api/character/${characterIDNumbers.join(
+  ", "
+)}`;
 
-// console.log(characterOneNumber)
-
-// setting api request to pull with 10 separate character ID's so that we can get an array of data to manipulate for those 10 characters
-const URL = `https://rickandmortyapi.com/api/character/${characterIDNumbersJoin}`;
-
-// making variables to display on the screen
-
-
-
+// Pulls an array of characterIDNumbers and display a random one based on randomCharacterRecieved
 $.ajax(URL).then(function (data) {
-//   console.log({ data });
-  $("#characterImage").append(`<img src="${data[randomCharacterRecieved].image}"/>${data[randomCharacterRecieved].name}<p>`);
-
-  // gets the names in each character pulled from the array an adds them to a select option
+  $("#characterImage").append(
+    `<img src="${data[randomCharacterRecieved].image}"/>${data[randomCharacterRecieved].name}<p>`
+  );
   data.forEach((element) => {
-    $("#characterOption").append(
-      `<option value="${element.name}">${element.name}</option>`
-    );
+    $("#characterOption").append(`<option value="${element.name}">${element.name}</option>`);
   });
 
   //compares the character name attached to the image to the data selected and lets you know if you guess correctly
-  $('#guessSelectionForm').submit(function(event){
+  $("#guessSelectionForm").submit(function (event) {
     event.preventDefault();
-    if ($('#characterOption').find(":selected").text() == data[randomCharacterRecieved].name && numberOfGuesses === 0) {
-        numberOfGuesses++
-        $('#confirmationText').text(`${$('#characterOption').find(":selected").text()} is the correct answer! it took you ${numberOfGuesses} guess!`)
-    } else if ($('#characterOption').find(":selected").text() == data[randomCharacterRecieved].name) {
-        numberOfGuesses++
-        $('#confirmationText').text(`${$('#characterOption').find(":selected").text()} is the correct answer! it took you ${numberOfGuesses} tries.`)
+    if (
+      $("#characterOption").find(":selected").text() ==
+        data[randomCharacterRecieved].name &&
+      numberOfGuesses === 0
+    ) {
+      numberOfGuesses++;
+      $("#confirmationText").text(
+        `${$("#characterOption")
+          .find(":selected")
+          .text()} is the correct answer! it took you ${numberOfGuesses} guess!`
+      );
+    } else if (
+      $("#characterOption").find(":selected").text() ==
+      data[randomCharacterRecieved].name
+    ) {
+      numberOfGuesses++;
+      $("#confirmationText").text(
+        `${$("#characterOption")
+          .find(":selected")
+          .text()} is the correct answer! it took you ${numberOfGuesses} tries.`
+      );
     } else {
-        $('#confirmationText').text(`${$('#characterOption').find(":selected").text()} is NOT the correct answer!`)
-        numberOfGuesses++
+      $("#confirmationText").text(
+        `${$("#characterOption")
+          .find(":selected")
+          .text()} is NOT the correct answer!`
+      );
+      numberOfGuesses++;
     }
-  })
+  });
 });
-
-// $('#difficultyLevelForm').submit(function(event){
-//     event.preventDefault();
-//     if ($('#characterOption').find(":selected").text() == data[randomCharacterRecieved].name) {
-//         numberOfGuesses++
-//         $('body').append(`<p>${$('#characterOption').find(":selected").text()} is the correct answer! it took you ${numberOfGuesses} tries.</p>`)
-//     } else {
-//         // console.log($('#characterOption').find(":selected").text())
-//         $('body').append(`<p>${$('#characterOption').find(":selected").text()} is NOT the correct answer!</p>`)
-//         numberOfGuesses++
-//     }
-//   })

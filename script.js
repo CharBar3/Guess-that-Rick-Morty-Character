@@ -10,6 +10,7 @@
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor
 
+// Function to get a random number between 1 and a larger number with the larger number being passed in
 function getRandomCharacterID() {
   return Math.floor(Math.random() * 826);
 }
@@ -49,7 +50,7 @@ const URL = `https://rickandmortyapi.com/api/character/${characterIDNumbersJoin}
 
 $.ajax(URL).then(function (data) {
 //   console.log({ data });
-  $("#characterImage").append(`<img src="${data[randomCharacterRecieved].image}"/><p>`);
+  $("#characterImage").append(`<img src="${data[randomCharacterRecieved].image}"/>${data[randomCharacterRecieved].name}<p>`);
 
   // gets the names in each character pulled from the array an adds them to a select option
   data.forEach((element) => {
@@ -61,16 +62,17 @@ $.ajax(URL).then(function (data) {
   //compares the character name attached to the image to the data selected and lets you know if you guess correctly
   $('#guessSelectionForm').submit(function(event){
     event.preventDefault();
-    if ($('#characterOption').find(":selected").text() == data[randomCharacterRecieved].name) {
+    if ($('#characterOption').find(":selected").text() == data[randomCharacterRecieved].name && numberOfGuesses === 0) {
         numberOfGuesses++
-        $('body').append(`<p>${$('#characterOption').find(":selected").text()} is the correct answer! it took you ${numberOfGuesses} tries.</p>`)
+        $('#confirmationText').text(`${$('#characterOption').find(":selected").text()} is the correct answer! it took you ${numberOfGuesses} guess!`)
+    } else if ($('#characterOption').find(":selected").text() == data[randomCharacterRecieved].name) {
+        numberOfGuesses++
+        $('#confirmationText').text(`${$('#characterOption').find(":selected").text()} is the correct answer! it took you ${numberOfGuesses} tries.`)
     } else {
-        // console.log($('#characterOption').find(":selected").text())
-        $('body').append(`<p>${$('#characterOption').find(":selected").text()} is NOT the correct answer!</p>`)
+        $('#confirmationText').text(`${$('#characterOption').find(":selected").text()} is NOT the correct answer!`)
         numberOfGuesses++
     }
   })
-  
 });
 
 // $('#difficultyLevelForm').submit(function(event){

@@ -18,15 +18,11 @@ for (let index = 0; index < amountOfOptions; index++) {
 }
 
 // Pull request from the Rick and Morty API for characters based on their ID numbers.
-const URL = `https://rickandmortyapi.com/api/character/${characterIDNumbers.join(
-  ", "
-)}`;
+const URL = `https://rickandmortyapi.com/api/character/${characterIDNumbers.join(", ")}`;
 
 // Pulls an array of characterIDNumbers and display a random one based on randomCharacterRecieved
 $.ajax(URL).then(function (data) {
-  $("#characterImage").append(
-    `<img src="${data[randomCharacterRecieved].image}"/>${data[randomCharacterRecieved].name}<p>`
-  );
+  $("#characterImage").append(`<img src="${data[randomCharacterRecieved].image}"/>${data[randomCharacterRecieved].name}<p>`);
   data.forEach((element) => {
     $("#characterOption").append(`<option value="${element.name}">${element.name}</option>`);
   });
@@ -35,32 +31,15 @@ $.ajax(URL).then(function (data) {
   $("#guessSelectionForm").submit(function (event) {
     event.preventDefault();
     if (
-      $("#characterOption").find(":selected").text() ==
-        data[randomCharacterRecieved].name &&
-      numberOfGuesses === 0
-    ) {
+      $("#characterOption").find(":selected").text() == data[randomCharacterRecieved].name && numberOfGuesses === 0) {
       numberOfGuesses++;
-      $("#confirmationText").text(
-        `${$("#characterOption")
-          .find(":selected")
-          .text()} is the correct answer! it took you ${numberOfGuesses} guess!`
-      );
+      $("#confirmationText").text(`${$("#characterOption").find(":selected").text()} is the correct answer! it took you ${numberOfGuesses} guess!`);
     } else if (
-      $("#characterOption").find(":selected").text() ==
-      data[randomCharacterRecieved].name
-    ) {
+      $("#characterOption").find(":selected").text() == data[randomCharacterRecieved].name) {
       numberOfGuesses++;
-      $("#confirmationText").text(
-        `${$("#characterOption")
-          .find(":selected")
-          .text()} is the correct answer! it took you ${numberOfGuesses} tries.`
-      );
+      $("#confirmationText").text(`${$("#characterOption").find(":selected").text()} is the correct answer! it took you ${numberOfGuesses} tries.`);
     } else {
-      $("#confirmationText").text(
-        `${$("#characterOption")
-          .find(":selected")
-          .text()} is NOT the correct answer!`
-      );
+      $("#confirmationText").text(`${$("#characterOption").find(":selected").text()} is NOT the correct answer!`);
       numberOfGuesses++;
     }
   });

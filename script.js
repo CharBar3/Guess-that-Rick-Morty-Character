@@ -20,8 +20,13 @@ for (let index = 0; index < amountOfOptions; index++) {
 // Pull request from the Rick and Morty API for characters based on their ID numbers.
 const URL = `https://rickandmortyapi.com/api/character/${characterIDNumbers.join(", ")}`;
 
+console.log(characterIDNumbers)
+console.log(randomCharacterRecieved)
+
 // Pulls an array of characterIDNumbers and display a random one based on randomCharacterRecieved
 $.ajax(URL).then(function (data) {
+
+  console.log(data)
   $("#characterImage").append(`<img src="${data[randomCharacterRecieved].image}"/>${data[randomCharacterRecieved].name}<p>`);
   data.forEach((element) => {$("#characterOption").append(`<option value="${element.name}">${element.name}</option>`);});
 
@@ -41,8 +46,6 @@ $.ajax(URL).then(function (data) {
       numberOfGuesses++;
     }
   });
-
-  
 
   // removes form after correct guess is made and inputs a play again button
   $("#guessSelectionForm").submit(function (event) {

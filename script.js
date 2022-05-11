@@ -23,9 +23,7 @@ const URL = `https://rickandmortyapi.com/api/character/${characterIDNumbers.join
 // Pulls an array of characterIDNumbers and display a random one based on randomCharacterRecieved
 $.ajax(URL).then(function (data) {
   $("#characterImage").append(`<img src="${data[randomCharacterRecieved].image}"/>${data[randomCharacterRecieved].name}<p>`);
-  data.forEach((element) => {
-    $("#characterOption").append(`<option value="${element.name}">${element.name}</option>`);
-  });
+  data.forEach((element) => {$("#characterOption").append(`<option value="${element.name}">${element.name}</option>`);});
 
   //compares the character name attached to the image to the data selected and lets you know if you guess correctly
   $("#guessSelectionForm").submit(function (event) {
@@ -43,4 +41,17 @@ $.ajax(URL).then(function (data) {
       numberOfGuesses++;
     }
   });
+
+  
+
+  // removes form after correct guess is made and inputs a play again button
+  $("#guessSelectionForm").submit(function (event) {
+    event.preventDefault();
+    if ($("#characterOption").find(":selected").text() == data[randomCharacterRecieved].name) {
+      $("#guessSelectionForm").remove()
+      $("#formDiv").append(`<button type="button" id="playAgainButton">Play Again?</button>`)
+      $('#playAgainButton').on('click', function(){
+        location.reload()
+      })
+    }});
 });

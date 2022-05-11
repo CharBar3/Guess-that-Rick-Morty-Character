@@ -20,6 +20,8 @@ button {
     color: green;
     border: 2px solid green;
     box-shadow: -3px 2px greenyellow;
+    height: 30px;
+    font-size: large;
 }
 
 select {
@@ -27,6 +29,8 @@ select {
     color: green;
     border: 2px solid green;
     box-shadow: -3px 2px greenyellow;
+    height: 30px;
+    font-size: large;
 }
 
 button:hover {
@@ -34,5 +38,14 @@ button:hover {
 }
 
 select:hover {
+    color: greenyellow;
+}
+
+#confirmationText {
+    color: green;
+    font-size: large;
+}
+
+#confirmationText:hover {
     color: greenyellow;
 }

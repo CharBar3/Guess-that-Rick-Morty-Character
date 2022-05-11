@@ -7,26 +7,28 @@ const guessCharacter = {
   // displays a character image on the screen and asks you to guess which charcter it is
   play: () => {
     // console.log('play function happening')
-    // window.location.assign('./gamePage.html')
+    console.log('play function')
+    window.location.assign('./gamePage.html')
+    console.log("do we get here")
     // window.location.reload()
     // everything under this line doesn't run in play function
     // console.log('do I get here')
 
-    $('body').append(`<header class="everything">
-    <h1>Guess that Rick & Morty Character!</h1>
-  </header>
-  <body class="everything">
-    <div id="characterImage"></div>
-    <div id="formDiv">
-      <form id="guessSelectionForm">
-          <select name="characterOption" id="characterOption">
+  //   $('body').append(`<header class="everything">
+  //   <h1>Guess that Rick & Morty Character!</h1>
+  // </header>
+  // <body class="everything">
+  //   <div id="characterImage"></div>
+  //   <div id="formDiv">
+  //     <form id="guessSelectionForm">
+  //         <select name="characterOption" id="characterOption">
 
-          </select>
-          <button>is this the character?</button>
-      </form>
-    </div>
-    <p id="confirmationText"></p>
-  </body>`)
+  //         </select>
+  //         <button>is this the character?</button>
+  //     </form>
+  //   </div>
+  //   <p id="confirmationText"></p>
+  // </body>`)
 
     // creates an array of character ID numbers
     const characterIDs = [];

@@ -18,6 +18,8 @@ Well the title kind of says it all! My app pulls a random rick and morty charact
 
 ##Getting Started
 
+[PLAY THE GAME!](https://charbar3.github.io/GuessThatCharacter-Project-One/)
+
 ##Future Features I'd like to ADD!
 1. Difficulty selector
 2. Better styling and background (if anyone has advice about backgrounds let me know!)

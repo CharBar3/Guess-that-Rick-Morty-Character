@@ -27,7 +27,7 @@ console.log(randomCharacterRecieved)
 $.ajax(URL).then(function (data) {
 
   console.log(data)
-  $("#characterImage").append(`<img src="${data[randomCharacterRecieved].image}"/>${data[randomCharacterRecieved].name}<p>`);
+  $("#characterImage").append(`<img src="${data[randomCharacterRecieved].image}"/>`);
   data.forEach((element) => {$("#characterOption").append(`<option value="${element.name}">${element.name}</option>`);});
 
   //compares the character name attached to the image to the data selected and lets you know if you guess correctly

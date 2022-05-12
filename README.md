@@ -2,14 +2,14 @@
 -
 Well the title kind of says it all! My app pulls a random rick and morty character from the rick and morty API and has you guess who they are.
 
-## Technologies used
+## Technologies Used
 1. HTML
 2. CSS
 3. JS/JQuery
 4. My Brilliance (lol jk)
 
 ## API Used
-https://rickandmortyapi.com/documentation/
+[Rick & Morty API](https://rickandmortyapi.com/documentation/)
 
 ##Screenshots
 
@@ -18,7 +18,7 @@ https://rickandmortyapi.com/documentation/
 
 ##Getting Started
 
-##Future Features I'd like to add
+##Future Features I'd like to ADD!
 1. Difficulty selector
 2. Better styling and background (if anyone has advice about backgrounds let me know!)
 3. Start screen because they're dope!

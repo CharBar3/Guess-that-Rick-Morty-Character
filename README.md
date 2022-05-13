@@ -1,5 +1,4 @@
 # Guess that Rick & Morty Character!
--
 Well the title kind of says it all! My app pulls a random rick and morty character from the rick and morty API and has you guess who they are.
 
 ## Technologies Used

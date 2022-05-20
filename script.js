@@ -3,6 +3,7 @@ function getRandomNumber(largestNumber) {
   return Math.floor(Math.random() * largestNumber);
 }
 
+// adding a comment here to see if I fixed my git commit issue where I wasn't commiting as myself
 // amount of character options the player chooses between
 const amountOfOptions = 10;
 

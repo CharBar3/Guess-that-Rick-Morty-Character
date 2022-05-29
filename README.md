@@ -17,7 +17,7 @@ Well the title kind of says it all! My app pulls a random rick and morty charact
 
 ## Getting Started
 
-[PLAY THE GAME!](https://charbar3.github.io/GuessThatCharacter-Project-One/)
+[PLAY THE GAME!](https://charbar3.github.io/Guess-that-Rick-Morty-Character/)
 
 ## Future Features I'd like to ADD!
 1. Difficulty selector
